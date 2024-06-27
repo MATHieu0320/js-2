@@ -1,23 +1,43 @@
-const pro = new Promise((resolve, reject) => {
-  // si je reject il va daans catch
+// const pro = new Promise((resolve, reject) => {
+//   // si je reject il va daans catch
 
-  // si je resolve il fait then
-  reject(4);
-});
-console.log(pro);
+//   // si je resolve il fait then
+//   resolve(4);
+// });
+// console.log(pro);
 
-pro
-  .then((n) => {
-    console.log("le nombre ", n);
-    return 5;
-  })
-  .then((n) => {
-    console.log(n);
-  })
-  .catch((erreur) => {
-    console.log("erreur", erreur);
-  });
+// pro
+//   .then((n) => {
+//     console.log("le nombre ", n);
+//     return 5;
+//   })
+//   .then((n) => {
+//     console.log(n);
+//     throw new error("Erreur hors catch");
+//   })
+//   .catch((erreur) => {
+//     console.log("erreur", erreur);
+//     return 15;
+//   })
+//   .then((n) => console.log(n))
+//   .finally(() => console.log("s affiche que ce soit reject ou resolve"));
 
+function wait(duration) {
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      resolve(duration);
+    }, duration)
+  );
+}
+// function wait(duration) {
+//   return new Promise((resolve, reject) =>
+//     setTimeout(() => {
+//       reject(duration);
+//       console.log("v");
+//     }, duration)
+//   );
+// }
+wait(1000).then(() => console.log("cc"));
 // function isPalindrome(word) {
 //   const reversedWord = word.split("").reverse().join("");
 //   console.log(reversedWord);

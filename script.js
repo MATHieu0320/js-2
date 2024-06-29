@@ -29,15 +29,69 @@ function wait(duration) {
     }, duration)
   );
 }
-// function wait(duration) {
-//   return new Promise((resolve, reject) =>
-//     setTimeout(() => {
-//       reject(duration);
-//       console.log("v");
-//     }, duration)
-//   );
-// }
-wait(1000).then(() => console.log("cc"));
+//
+function waitFAil(duration) {
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      reject(duration);
+    }, duration)
+  );
+}
+0;
+
+wait(1000)
+  .then(() => {
+    console.log("attendre 1 s");
+    return wait(2000);
+  })
+  .then(() => {
+    console.log("attendre 2 s");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+waitFAil(1000).then(() => console.log("cc"));
+
+async function main() {
+  const duration2 = await wait(2000);
+  console.log(`duration :  ${duration2}`);
+  try {
+    // await waitFAil(2000);
+    await wait(2000);
+    console.log("c");
+    await wait(5000);
+    console.log("5s");
+    return 2;
+  } catch (e) {
+    console.log(e);
+  }
+}
+console.log(main().then((n) => console.log(n + 2)));
+
+Promise.all([wait(300), wait(200), wait(5000)])
+  .then((value) => {
+    console.log(value);
+  })
+  .catch(console.log());
+Promise.allSettled([wait(300), wait(200), waitFAil(5000)])
+  .then(() => {
+    console.log();
+  })
+  .catch(console.log());
+Promise.any([wait(300), wait(200), waitFAil(5000)])
+  .then(() => {
+    console.error;
+    // renvoie les bonne promesse
+  })
+  .catch(console.log());
+
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then((res) => res.text())
+  .then((body) => console.log(body));
+
+// .then((res) => res.json())
+
 // function isPalindrome(word) {
 //   const reversedWord = word.split("").reverse().join("");
 //   console.log(reversedWord);

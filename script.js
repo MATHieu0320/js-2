@@ -85,11 +85,12 @@ Promise.any([wait(300), wait(200), waitFAil(5000)])
     // renvoie les bonne promesse
   })
   .catch(console.log());
-
+async function fetchuser() {
+  const fetch = fetch("https://jsonplaceholder.typicode.com/users");
+}
 fetch("https://jsonplaceholder.typicode.com/users")
-  .then((res) => res.text())
-  .then((body) => console.log(body));
-
+  .then((res) => console.log(res))
+  .then((response) => console.log(response));
 // .then((res) => res.json())
 
 // function isPalindrome(word) {
@@ -165,3 +166,50 @@ fetch("https://jsonplaceholder.typicode.com/users")
 // console.log(john.CanPass());
 // const marc = new etudiant("marc", "rash");
 // marc.notes = 19;
+let tab = [
+  "cedzfdaff",
+  "efqfeffffffffffffzfzzefze",
+  "seffffffffffzs",
+  "feffzfsf",
+];
+let tab2 = [];
+let ordre;
+for (let i = 0; i < tab.length; i++) {
+  tab2.push(tab[i].length);
+}
+console.log(Math.max(...tab2));
+console.log(...tab2);
+
+function play(params) {
+  // for (let j = 0; j < tab.length; j++) {
+  //   if (tab[j].length > tab[j + 1].length) {
+  //     console.log(tab[j].length);
+  //   }
+  // }
+}
+play();
+console.log(Math.round(Math.random(tab) * tab.length));
+function afficheEnFonction(params) {
+  const random = Math.round(Math.random(tab) * tab.length);
+  document.body.innerHTML = tab[random];
+}
+afficheEnFonction();
+function titlecase(str) {
+  let returnb;
+  let tab5 = [];
+  let split = str.split(" ");
+  for (let i = 0; i < split.length; i++) {
+    let Maj = split[i].charAt(0).toUpperCase();
+
+    returnb = split[i].replace(split[i].charAt(0), Maj);
+    tab5.push(returnb);
+    console.log(returnb);
+  }
+  console.log(tab5);
+
+  return [...tab5];
+}
+
+// console.log(titlecase("dazfdaz  afeafe ezfze"));
+console.log(titlecase("j' habite dans la ville de paris"));
+

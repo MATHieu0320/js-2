@@ -86,11 +86,26 @@ Promise.any([wait(300), wait(200), waitFAil(5000)])
   })
   .catch(console.log());
 async function fetchuser() {
-  const fetch = fetch("https://jsonplaceholder.typicode.com/users");
+  const r = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title: "first" }),
+  });
+
+  //   Headers: {
+  // "Accept": "application/json",
+  //   }
+  if (r.ok === true) {
+    console.log("bon");
+    return r.json();
+  }
+  throw new Error("Marche pas");
 }
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((res) => console.log(res))
-  .then((response) => console.log(response));
+
+fetchuser().then((res) => console.log(res));
 // .then((res) => res.json())
 
 // function isPalindrome(word) {
@@ -212,4 +227,3 @@ function titlecase(str) {
 
 // console.log(titlecase("dazfdaz  afeafe ezfze"));
 console.log(titlecase("j' habite dans la ville de paris"));
-

@@ -227,3 +227,12 @@ function titlecase(str) {
 
 // console.log(titlecase("dazfdaz  afeafe ezfze"));
 console.log(titlecase("j' habite dans la ville de paris"));
+
+const i1 = document.getElementById("input1");
+input1.addEventListener(
+  ("click",
+  () => {
+    console.log("d");
+  })
+);
+

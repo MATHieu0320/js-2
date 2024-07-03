@@ -226,13 +226,27 @@ function titlecase(str) {
 }
 
 // console.log(titlecase("dazfdaz  afeafe ezfze"));
-console.log(titlecase("j' habite dans la ville de paris"));
+// console.log(titlecase("j' habite dans la ville de paris"));
 
-const i1 = document.getElementById("input1");
-input1.addEventListener(
-  ("click",
-  () => {
-    console.log("d");
-  })
-);
+// const i1 = document.getElementById("input1");
+// input1.addEventListener(
+//   ("click",
+//   () => {
+//     console.log("d");
+//   })
+// );
+let dates = new Date("july 19, 1975 23:15:30");
+
+// tolocaldatestring
+function addDays(date, days) {
+  const datesaddition = date.getDate() + days;
+  const mois = date.getMonth() + 1;
+  if (datesaddition > 31) {
+    throw error("Impaussible que days sois superieur à 31");
+  } else {
+    return `Apres modification la date sera le ${datesaddition}/${mois}/24 `;
+  }
+}
+
+console.log(addDays(dates, 13));
 

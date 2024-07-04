@@ -235,12 +235,15 @@ function titlecase(str) {
 //     console.log("d");
 //   })
 // );
-let dates = new Date("july 19, 1975 23:15:30");
-
+let dates = new Date("july 4, 1975 23:15:30");
+const deux = dates.setDate(dates.getMonth());
+deux.toLocaleString();
+console.log(deux);
 // tolocaldatestring
 function addDays(date, days) {
-  const datesaddition = date.getDate() + days;
-  const mois = date.getMonth() + 1;
+  const newDate = new Date(date.getTime());
+  const datesaddition = newDate.getDate() + days;
+  const mois = newDate.getMonth() + days;
   if (datesaddition > 31) {
     throw error("Impaussible que days sois superieur à 31");
   } else {
@@ -248,5 +251,39 @@ function addDays(date, days) {
   }
 }
 
-console.log(addDays(dates, 13));
+console.log(addDays(dates, 10));
+
+/////////////////////////////////////////////////////////////////////////
+const dates2 = new Date("2024 July 20, 69 00:20:18  ");
+const MONTHS = "months";
+const DAYS = "days";
+const YEARS = "years";
+function addInterval(date, n, unit) {
+  let newDate2 = new Date(date.getTime());
+
+  if (unit === MONTHS) {
+    newDate2.setMonth(newDate2.getMonth() + n);
+    console.log(newDate2.getMonth() + n);
+  }
+  if (unit === DAYS) {
+    newDate2.setDate(newDate2.getDate() + n);
+    console.log(newDate2.toLocaleString());
+  }
+  if (unit === YEARS) {
+    newDate2.setFullYear(newDate2.getFullYear() + n);
+  }
+
+  // if (unit === YEARS) {
+  //   newDate2.setDate(newDate2.getMonth() + n);
+  // }
+  return newDate2;
+}
+console.log(addInterval(dates2, 5, YEARS));
+
+localStorage.setItem("prenom", "mathieu");
+console.log(localStorage);
+// getitem recuperelavaleur
+// clear
+// removeitems
+
 

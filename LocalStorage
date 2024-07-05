@@ -1,0 +1,35 @@
+const i1 = document.getElementById("i1");
+const btn = document.getElementById("btn");
+const listes = document.getElementById("listes");
+localStorage.setItem("text", "vv");
+let tableau = [];
+for (let i = 0; i < 3; i++) {
+  console.log(i);
+  listes.innerHTML += `<h1>${localStorage.getItem(i)}<br></h1>`;
+
+  tableau.push(localStorage.getItem(i));
+  console.log(tableau);
+}
+
+console.log(i1, btn, listes);
+let TargetValue;
+i1.addEventListener("input", (e) => {
+  TargetValue = e.target.value;
+  TargetValue.toLowerCase();
+  console.log();
+});
+
+btn.addEventListener("click", () => {
+  tableau.push(TargetValue);
+  console.log(tableau);
+  listes.innerHTML += `${TargetValue} <br>`;
+
+  localStorage.setItem(tableau.indexOf(TargetValue), TargetValue);
+});
+// function CreerLocalStorage(Valeur) {
+//   // si il clique sur le btn pour chaque element creer tu fais la function
+//   // alors tu local storage l element si y a rien tu fais rien
+// }
+// const txt = document.getElementById("i2").value;
+
+// document.getElementById("result").innerHTML = localStorage.getItem("text");

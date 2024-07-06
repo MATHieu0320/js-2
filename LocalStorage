@@ -1,15 +1,47 @@
 const i1 = document.getElementById("i1");
 const btn = document.getElementById("btn");
 const listes = document.getElementById("listes");
+const h1 = document.querySelectorAll("elements");
+
+log;
 localStorage.setItem("text", "vv");
 let tableau = [];
+let test = "ytk";
 for (let i = 0; i < 3; i++) {
   console.log(i);
-  listes.innerHTML += `<h1>${localStorage.getItem(i)}<br></h1>`;
+  listes.innerHTML += `<h1 id="${localStorage.getItem(i)} "
+  class = "elements">${localStorage.getItem(i)}<br></h1>`;
 
   tableau.push(localStorage.getItem(i));
   console.log(tableau);
 }
+
+listes.addEventListener("click", (e) => {
+  let id = e.target.id;
+  id.toString();
+  let string = `${id} `;
+  console.log(tableau[0]);
+  console.log(id);
+  for (let i = 0; i < tableau.length; i++) {
+    if ("ytk" == id) {
+      console.log("pet");
+    } else {
+      console.log("onno");
+    }
+  }
+
+  // console.log(id);
+  // console.log(e.target.id);
+  // console.log(tableau);
+  // let indexof = tableau.indexOf(`${test}`);
+  // console.log(indexof);
+  // for (let i = 0; i < tableau.length; i++)
+  //   if (tableau[i] == id) {
+  //     let indexof = tableau.indexOf(id);
+  //     console.log(indexof);
+  //   }
+  // console.log(tableau);
+});
 
 console.log(i1, btn, listes);
 let TargetValue;

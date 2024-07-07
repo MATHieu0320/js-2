@@ -1,63 +1,62 @@
 const i1 = document.getElementById("i1");
 const btn = document.getElementById("btn");
 const listes = document.getElementById("listes");
-const h1 = document.querySelectorAll("elements");
+const ul = document.querySelector("ul");
 
-log;
-localStorage.setItem("text", "vv");
 let tableau = [];
-let test = "ytk";
-for (let i = 0; i < 3; i++) {
-  console.log(i);
-  listes.innerHTML += `<h1 id="${localStorage.getItem(i)} "
-  class = "elements">${localStorage.getItem(i)}<br></h1>`;
+let thisIsLife = [];
+thisIsLife = tableau.filter((element) => element !== null);
+console.log(thisIsLife);
+console.log(tableau);
+function cliqueBtn() {
+  let TargetValue;
+  i1.addEventListener("input", (e) => {
+    TargetValue = e.target.value;
+    TargetValue.toLowerCase();
+    console.log();
+  });
+  btn.addEventListener("click", () => {
+    thisIsLife.push(TargetValue);
 
-  tableau.push(localStorage.getItem(i));
-  console.log(tableau);
+    listes.innerHTML += `${TargetValue} <br>`;
+    console.log(TargetValue);
+    localStorage.setItem(`${TargetValue}`, TargetValue);
+    // listes.innerHTML += ` ${localStorage.getItem("push")} <br> `;
+    // localStorage.setItem("push", thisIsLife);
+  });
 }
 
-listes.addEventListener("click", (e) => {
-  let id = e.target.id;
-  id.toString();
-  let string = `${id} `;
-  console.log(tableau[0]);
-  console.log(id);
-  for (let i = 0; i < tableau.length; i++) {
-    if ("ytk" == id) {
-      console.log("pet");
+function affichage() {
+  for (let i = 0; i < localStorage.length; i++) {
+    if (localStorage.getItem(i) == null || undefined) {
     } else {
-      console.log("onno");
+      thisIsLife.push(localStorage.getItem(TargetValue));
+      listes.innerHTML += `<h1  >${localStorage.getItem(
+        thisIsLife[i]
+      )}<br></h1>`;
     }
   }
+  console.log(thisIsLife);
+}
 
-  // console.log(id);
-  // console.log(e.target.id);
-  // console.log(tableau);
-  // let indexof = tableau.indexOf(`${test}`);
-  // console.log(indexof);
-  // for (let i = 0; i < tableau.length; i++)
-  //   if (tableau[i] == id) {
-  //     let indexof = tableau.indexOf(id);
-  //     console.log(indexof);
-  //   }
-  // console.log(tableau);
-});
+function Suprimer() {
+  ul.addEventListener("click", (e) => {
+    const innert = e.target.innerHTML;
+    const replace = innert.replace("<br>", "");
+    const indexOf2 = thisIsLife.indexOf(replace);
+
+    console.log(innert);
+    console.log(indexOf2);
+    localStorage.removeItem(indexOf2);
+    thisIsLife.splice(indexOf2, 1);
+    console.log(indexOf2);
+    localStorage.removeItem(replace);
+    console.log(thisIsLife);
+  });
+}
 
 console.log(i1, btn, listes);
-let TargetValue;
-i1.addEventListener("input", (e) => {
-  TargetValue = e.target.value;
-  TargetValue.toLowerCase();
-  console.log();
-});
 
-btn.addEventListener("click", () => {
-  tableau.push(TargetValue);
-  console.log(tableau);
-  listes.innerHTML += `${TargetValue} <br>`;
-
-  localStorage.setItem(tableau.indexOf(TargetValue), TargetValue);
-});
 // function CreerLocalStorage(Valeur) {
 //   // si il clique sur le btn pour chaque element creer tu fais la function
 //   // alors tu local storage l element si y a rien tu fais rien
@@ -65,3 +64,9 @@ btn.addEventListener("click", () => {
 // const txt = document.getElementById("i2").value;
 
 // document.getElementById("result").innerHTML = localStorage.getItem("text");
+
+cliqueBtn();
+affichage();
+
+Suprimer();
+
